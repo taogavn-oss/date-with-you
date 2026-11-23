@@ -452,7 +452,7 @@ dateSetBtn.addEventListener("click", async () => {
 });
 
 function launchConfetti() {
-  const colors = ["#42b4f5", "#ffd426", "#7ce0fa", "#fbd36b", "#e58e92"];
+  const colors = ["#9db7db", "#b4d48d", "#f6d27b", "#f5cec3", "#dec8a4"];
   confettiOverlay.replaceChildren();
 
   for (let index = 0; index < 52; index += 1) {
