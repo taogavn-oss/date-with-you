@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#fff8ed" />
+    <meta
+      name="description"
+      content="Một lời mời hẹn hò nhỏ xinh, vui vẻ và đầy bất ngờ."
+    />
+    <title>Hẹn hò cùng mình nhé? 💕</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div class="background-shape shape-coral" aria-hidden="true"></div>
+    <div class="background-shape shape-mint" aria-hidden="true"></div>
+    <div class="background-shape shape-lilac" aria-hidden="true"></div>
+    <div class="doodle doodle-one" aria-hidden="true">✦</div>
+    <div class="doodle doodle-two" aria-hidden="true">♥</div>
+    <div class="doodle doodle-three" aria-hidden="true">✿</div>
+    <div class="hearts-container" id="heartsContainer" aria-hidden="true"></div>
+    <div class="confetti-overlay" id="confettiOverlay" aria-hidden="true"></div>
+
+    <main class="app-shell" id="appCard">
+      <aside class="visual-panel" aria-label="Minh họa buổi hẹn">
+        <div class="visual-badge"><span>✦</span> Kèo hẹn siêu cấp đáng yêu</div>
+        <div class="visual-copy">
+          <p class="visual-kicker" id="visualKicker">Một câu hỏi nhỏ xíu...</p>
+          <p class="visual-title" id="visualTitle">Nhưng độ dễ thương thì rất to!</p>
+        </div>
+        <div class="hero-art-wrap">
+          <span class="art-sticker sticker-left">hẹn nhé!</span>
+          <span class="art-sticker sticker-right">♡</span>
+          <img
+            class="hero-art"
+            src="assets/cute-date-hero.png"
+            alt="Minh họa một cặp đôi dễ thương cùng uống sinh tố dâu trong buổi hẹn"
+          />
+        </div>
+        <p class="visual-note">Được làm bằng một chút can đảm và rất nhiều rung động.</p>
+      </aside>
+
+      <section class="content-panel">
+        <nav class="stepper" aria-label="Tiến trình lời mời">
+          <ol>
+            <li class="step active" data-step="1" aria-current="step">
+              <span class="step-number">1</span>
+              <span class="step-label">Lời mời</span>
+            </li>
+            <li class="step" data-step="2">
+              <span class="step-number">2</span>
+              <span class="step-label">Món ngon</span>
+            </li>
+            <li class="step" data-step="3">
+              <span class="step-number">3</span>
+              <span class="step-label">Lịch hẹn</span>
+            </li>
+            <li class="step" data-step="4">
+              <span class="step-number">4</span>
+              <span class="step-label">Chốt kèo</span>
+            </li>
+          </ol>
+        </nav>
+
+        <section class="page active invitation-page" id="page1" aria-labelledby="inviteTitle">
+          <div class="eyebrow"><span>💌</span> Thông báo quan trọng</div>
+          <h1 id="inviteTitle">Cuối tuần này,<br /><span>mình hẹn hò nhé?</span></h1>
+          <p class="lead">
+            Mình đã chuẩn bị một kế hoạch khá xịn. Còn thiếu đúng một người thôi — là bạn đó!
+          </p>
+
+          <div class="invitation-actions" id="invitationActions">
+            <button class="btn btn-primary btn-large" id="yesBtn" type="button">
+              Đồng ý luôn <span aria-hidden="true">💖</span>
+            </button>
+            <button class="btn btn-soft btn-large" id="noBtn" type="button">
+              Từ chối nhẹ <span aria-hidden="true">🙈</span>
+            </button>
+          </div>
+
+          <div class="retry-card" id="noMessage" role="status" aria-live="polite" hidden>
+            <span class="retry-emoji" aria-hidden="true">😳</span>
+            <div>
+              <strong>Ơ kìa, chắc tay trượt rồi đó!</strong>
+              <p>Cho bạn chọn lại một lần nữa nè.</p>
+            </div>
+            <div class="retry-actions">
+              <button class="btn btn-outline btn-small" id="retryNoBtn" type="button">
+                Chọn lại nha
+              </button>
+              <button class="btn btn-primary btn-small" id="acceptAfterNoBtn" type="button">
+                Ừ, đồng ý nè
+              </button>
+            </div>
+          </div>
+
+          <p class="tiny-note">Gợi ý: câu trả lời màu hồng trông rất hợp với bạn ✨</p>
+        </section>
+
+        <section class="page" id="page2" aria-labelledby="foodTitle">
+          <div class="page-heading">
+            <div>
+              <p class="section-kicker">Bước 2 · Nạp năng lượng</p>
+              <h2 id="foodTitle">Chiếc bụng nhỏ muốn ăn gì?</h2>
+              <p>Chọn một món khiến bạn vui ngay từ cái nhìn đầu tiên.</p>
+            </div>
+            <span class="heading-emoji" aria-hidden="true">🍽️</span>
+          </div>
+
+          <div class="food-grid" id="foodGrid" role="group" aria-label="Chọn món ăn">
+            <button class="food-item" type="button" data-food="Pizza" aria-pressed="false">
+              <span class="food-check" aria-hidden="true">✓</span><span class="emoji">🍕</span><span class="label">Pizza</span>
+            </button>
+            <button class="food-item" type="button" data-food="Sushi" aria-pressed="false">
+              <span class="food-check" aria-hidden="true">✓</span><span class="emoji">🍣</span><span class="label">Sushi</span>
+            </button>
+            <button class="food-item" type="button" data-food="Burger" aria-pressed="false">
+              <span class="food-check" aria-hidden="true">✓</span><span class="emoji">🍔</span><span class="label">Burger</span>
+            </button>
+            <button class="food-item" type="button" data-food="Mì Ý" aria-pressed="false">
+              <span class="food-check" aria-hidden="true">✓</span><span class="emoji">🍝</span><span class="label">Mì Ý</span>
+            </button>
+            <button class="food-item" type="button" data-food="Lẩu" aria-pressed="false">
+              <span class="food-check" aria-hidden="true">✓</span><span class="emoji">🍲</span><span class="label">Lẩu</span>
+            </button>
+            <button class="food-item" type="button" data-food="Mì ramen" aria-pressed="false">
+              <span class="food-check" aria-hidden="true">✓</span><span class="emoji">🍜</span><span class="label">Mì ramen</span>
+            </button>
+            <button class="food-item" type="button" data-food="Đồ nướng" aria-pressed="false">
+              <span class="food-check" aria-hidden="true">✓</span><span class="emoji">🥩</span><span class="label">Đồ nướng</span>
+            </button>
+            <button class="food-item" type="button" data-food="Bánh ngọt" aria-pressed="false">
+              <span class="food-check" aria-hidden="true">✓</span><span class="emoji">🍰</span><span class="label">Bánh ngọt</span>
+            </button>
+          </div>
+
+          <p class="form-message" id="foodError" role="alert" hidden>
+            Chọn một món ngon trước nha!
+          </p>
+          <div class="page-actions">
+            <button class="btn btn-ghost" type="button" data-back-step="1">← Quay lại</button>
+            <button class="btn btn-primary" id="foodNextBtn" type="button" disabled>
+              Chọn lịch hẹn <span aria-hidden="true">→</span>
+            </button>
+          </div>
+        </section>
+
+        <section class="page" id="page3" aria-labelledby="dateTitle">
+          <div class="page-heading compact-heading">
+            <div>
+              <p class="section-kicker">Bước 3 · Chọn ngày lành</p>
+              <h2 id="dateTitle">Chốt ngày để mình còn hồi hộp</h2>
+              <p>Chỉ hiển thị tháng này và tháng kế tiếp cho đỡ rối nha.</p>
+            </div>
+            <span class="heading-emoji" aria-hidden="true">🗓️</span>
+          </div>
+
+          <div class="calendar-card">
+            <div class="calendar-header">
+              <button class="nav-btn" id="calPrev" type="button" aria-label="Tháng trước">←</button>
+              <span class="month-year" id="calMonthYear" aria-live="polite"></span>
+              <button class="nav-btn" id="calNext" type="button" aria-label="Tháng sau">→</button>
+            </div>
+            <div class="calendar-grid" id="calendarGrid" aria-label="Lịch chọn ngày"></div>
+          </div>
+
+          <div class="time-section">
+            <div class="field-label"><span>⏰</span> Chọn giờ gặp nhau</div>
+            <div class="time-grid" id="timeGrid" role="group" aria-label="Chọn giờ"></div>
+          </div>
+
+          <p class="form-message" id="dateError" role="alert" hidden>
+            Chọn đủ ngày và giờ để chốt kèo nhé.
+          </p>
+          <div class="page-actions">
+            <button class="btn btn-ghost" type="button" data-back-step="2">← Quay lại</button>
+            <button class="btn btn-primary" id="dateSetBtn" type="button" disabled>
+              Chốt kèo này <span aria-hidden="true">✨</span>
+            </button>
+          </div>
+        </section>
+
+        <section class="page confirmation-page" id="page4" aria-labelledby="confirmTitle">
+          <div class="success-burst" aria-hidden="true"><span>✓</span></div>
+          <p class="section-kicker">Nhiệm vụ hoàn thành!</p>
+          <h2 id="confirmTitle">Hẹn hò đã được chốt! <span aria-hidden="true">🎉</span></h2>
+          <p class="confirmation-lead">Nhớ đến đúng giờ và mang theo nụ cười nha.</p>
+
+          <div class="date-ticket">
+            <span class="ticket-dot ticket-dot-left" aria-hidden="true"></span>
+            <span class="ticket-dot ticket-dot-right" aria-hidden="true"></span>
+            <div class="confirmation-detail">
+              <span class="icon" aria-hidden="true">📅</span>
+              <div><span class="detail-label">Ngày hẹn</span><strong id="confirmDate"></strong></div>
+            </div>
+            <div class="confirmation-detail">
+              <span class="icon" aria-hidden="true">⏰</span>
+              <div><span class="detail-label">Giờ gặp</span><strong id="confirmTime"></strong></div>
+            </div>
+            <div class="confirmation-detail">
+              <span class="icon" aria-hidden="true">🍽️</span>
+              <div><span class="detail-label">Món đã chọn</span><strong id="confirmFood"></strong></div>
+            </div>
+          </div>
+
+          <div class="closing-note">Hẹn bạn ở một buổi tối thật vui! 💕</div>
+          <p class="send-status" id="sendStatus" role="status" aria-live="polite" hidden></p>
+          <button class="btn btn-soft" id="resetBtn" type="button">↻ Chọn lại từ đầu</button>
+        </section>
+      </section>
+    </main>
+
+    <script src="js/app.js"></script>
+  </body>
+</html>
