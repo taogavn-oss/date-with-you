@@ -28,6 +28,8 @@ const pages = {
 
 const stepItems = $$(".stepper .step");
 const foodItems = $$(".food-item");
+const customFoodWrap = $("#customFoodWrap");
+const customFoodInput = $("#customFoodInput");
 const foodNextBtn = $("#foodNextBtn");
 const foodError = $("#foodError");
 const dateSetBtn = $("#dateSetBtn");
@@ -85,10 +87,10 @@ const MONTHS = [
 ];
 
 const VISUAL_COPY = {
-  1: ["Một câu hỏi nhỏ xíu...", "Nhưng độ dễ thương thì rất to!"],
-  2: ["Đến phần ngon nhất rồi!", "Món nào cũng được, miễn là cùng nhau."],
-  3: ["Sắp thành kèo thật rồi...", "Chọn một ngày đẹp trời để gặp nhau nhé."],
-  4: ["Ting ting! Chốt đơn thành công", "Một buổi hẹn đáng mong chờ đang đến!"],
+  1: ["Có thư tới nè 💌", "Em có bận không, đi ăn với anh nha?"],
+  2: ["Câu hỏi quan trọng 😋", "Em thích ăn món gì?"],
+  3: ["Gần xong rồi ✨", "Chọn ngày em rảnh để anh qua đón"],
+  4: ["Chốt đơn 🎉", "Việc còn lại cứ để a lo"],
 };
 
 function initFloatingHearts() {
@@ -151,11 +153,7 @@ noBtn.addEventListener("click", () => {
   retryNoBtn.focus();
 });
 
-retryNoBtn.addEventListener("click", () => {
-  noMessage.hidden = true;
-  invitationActions.hidden = false;
-  yesBtn.focus();
-});
+retryNoBtn.addEventListener("click", () => goToStep(2));
 
 $$('[data-back-step]').forEach((button) => {
   button.addEventListener("click", () => goToStep(Number(button.dataset.backStep)));
@@ -170,10 +168,36 @@ foodItems.forEach((item) => {
 
     item.classList.add("selected");
     item.setAttribute("aria-pressed", "true");
-    AppState.food = item.dataset.food;
-    foodNextBtn.disabled = false;
     foodError.hidden = true;
+
+    if (item.dataset.food === "custom") {
+      customFoodWrap.hidden = false;
+      const customValue = customFoodInput.value.trim();
+      AppState.food = customValue || null;
+      foodNextBtn.disabled = !customValue;
+      requestAnimationFrame(() => customFoodInput.focus());
+    } else {
+      customFoodWrap.hidden = true;
+      AppState.food = item.dataset.food;
+      foodNextBtn.disabled = false;
+    }
   });
+});
+
+customFoodInput.addEventListener("input", () => {
+  const value = customFoodInput.value.trim();
+  AppState.food = value || null;
+  foodNextBtn.disabled = !value;
+  if (value) {
+    foodError.hidden = true;
+  }
+});
+
+customFoodInput.addEventListener("keydown", (event) => {
+  if (event.key === "Enter" && AppState.food) {
+    event.preventDefault();
+    foodNextBtn.click();
+  }
 });
 
 foodNextBtn.addEventListener("click", () => {
@@ -347,7 +371,7 @@ async function sendDateResult({ formattedDate, rawDate, time, food }) {
       signal: controller.signal,
       body: JSON.stringify({
         access_key: key,
-        subject: `💕 Chốt kèo hẹn hò: ${food} lúc ${time} (${formattedDate})`,
+        subject: `💕 Chốt  hò: ${food} lúc ${time} (${formattedDate})`,
         from_name: "Lời mời hẹn hò 💕",
         "Món đã chọn": food,
         "Ngày hẹn": `${formattedDate} (${rawDate})`,
@@ -378,11 +402,11 @@ function updateSendStatus(status) {
   sendStatus.classList.remove("is-success", "is-fallback");
 
   if (status === "sent") {
-    sendStatus.textContent = "Đã gửi vé hẹn thành công 💌";
+    sendStatus.textContent = "Đã gửi lịch hẹn qua cho anh rồi nha 💌";
     sendStatus.classList.add("is-success");
     sendStatus.hidden = false;
   } else if (status === "error") {
-    sendStatus.textContent = "Chụp màn hình vé hẹn này gửi lại cho mình nhé 📸";
+    sendStatus.textContent = "Em chụp màn hình vé hẹn này gửi cho anh nha 📸";
     sendStatus.classList.add("is-fallback");
     sendStatus.hidden = false;
   } else {
@@ -460,6 +484,8 @@ function resetApp() {
     item.setAttribute("aria-pressed", "false");
   });
 
+  customFoodInput.value = "";
+  customFoodWrap.hidden = true;
   foodNextBtn.disabled = true;
   dateSetBtn.disabled = true;
   foodError.hidden = true;
